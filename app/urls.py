@@ -1,4 +1,3 @@
-from multiprocessing import AuthenticationError
 from django.urls import path
 from app import views
 from django.conf import settings
@@ -8,11 +7,9 @@ from app.forms import LoginForm, PasswordChangeForm, MyPasswordResetForm, MySetP
 
 
 urlpatterns = [
-    #path('', views.home),
-
     path('', views.ProductView.as_view(), name='home'),
-
     path('product-detail/<int:pk>/', views.ProductDetailView.as_view(), name='product-detail'),
+    
     path('add-to-cart/', views.add_to_cart, name='add-to-cart'),
     path('cart/', views.show_cart, name='showcart'),
     path('pluscart/', views.plus_cart),
@@ -25,11 +22,10 @@ urlpatterns = [
     path('profile/', views.ProfileView.as_view(), name='profile'),
     path('address/', views.address, name='address'),
     path('orders/', views.orders, name='orders'),
-    #path('changepassword/', views.change_password, name='changepassword'),
+    
     path('mobile/', views.mobile, name='mobile'),
     path('mobile/<slug:data>', views.mobile, name='mobiledata'),
     path('laptop/', views.laptop, name='laptop'),
-   # path('mobile/<slug:data>', views.mobile, name='mobiledata'),
     path('topwear/', views.topwear, name='topwear'),
     path('topwear/<slug:data>', views.topwear, name='topweardata'),
     path('bottomwear/', views.bottomwear, name='bottomwear'),

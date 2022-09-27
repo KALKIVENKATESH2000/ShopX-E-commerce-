@@ -11,9 +11,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
-# def home(request):
 
-#  return render(request, 'app/home.html')  
 
 class ProductView(View):
     def get (self, request):
@@ -22,8 +20,7 @@ class ProductView(View):
         mobiles = Product.objects.filter(category='Mobile')
         #laptops = Product.objects.filter(category='Laptop')
         return render (request, 'app/home.html', {'topwears':topwears, 'bottomwears':bottomwears, 'mobiles':mobiles})
-# def product_detail(request):
-#  return render(request, 'app/productdetail.html')
+
 
 class ProductDetailView(View):
     def get(self, request, pk):
@@ -131,8 +128,6 @@ def remove_cart(request):
 def buy_now(request):
  return render(request, 'app/buynow.html')
 
-# def profile(request):
-#  return render(request, 'app/profile.html')
 
 @method_decorator(login_required, name='dispatch')
 class ProfileView(View):
@@ -167,8 +162,6 @@ def orders(request):
 
     return render(request, 'app/orders.html', {'orders':orders})
 
-# def change_password(request):
-#  return render(request, 'app/changepassword.html')
 
 def mobile(request,  data=None):
     if data == None:
@@ -184,12 +177,6 @@ def mobile(request,  data=None):
 def laptop(request,  data=None):
     if data == None:
         laptops = Product.objects.filter(category='Laptop')
-    # elif data == 'RedMi' or data == 'Samsung' or data == 'OnePlus' or data == 'Motorala' or data == 'Realme' or data == 'Vivo':
-    #     mobiles = Product.objects.filter(category='Mobile').filter(brand=data)
-    # elif data == 'below':
-    #     mobiles = Product.objects.filter(category='Mobile').filter(discounted_price__lt=10000)
-    # elif data == 'above':
-    #     mobiles = Product.objects.filter(category='Mobile').filter(discounted_price__gt=10000)
     return render(request, 'app/laptop.html', {'laptops':laptops})
 
 
@@ -212,8 +199,7 @@ def bottomwear(request, data=None):
         bottomwears = Product.objects.filter(category='Bottom Wear').filter(discounted_price__gt=450)
     return render(request, 'app/bottomwear.html', {'bottomwears':bottomwears})
 
-#def customerregistration(request):
-# return render(request, 'app/customerregistration.html')
+
 class CustomerRegistrationView(View):
     def get(self, request):
         form = CustomerRegistrationForm()
