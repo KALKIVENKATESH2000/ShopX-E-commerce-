@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from app import views
 from django.conf import settings
 from django.conf.urls.static import static
@@ -7,6 +7,9 @@ from app.forms import LoginForm, PasswordChangeForm, MyPasswordResetForm, MySetP
 
 
 urlpatterns = [
+
+    path('api/', include('APIs.urls')),
+
     path('', views.ProductView.as_view(), name='home'),
     path('product-detail/<int:pk>/', views.ProductDetailView.as_view(), name='product-detail'),
     
