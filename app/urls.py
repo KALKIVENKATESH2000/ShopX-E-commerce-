@@ -7,14 +7,9 @@ from app.forms import LoginForm, PasswordChangeForm, MyPasswordResetForm, MySetP
 
 
 urlpatterns = [
-<<<<<<< HEAD
 
     path('api/', include('APIs.urls')),
-=======
-    path('products/', views.products, name='products'),
-    path('products/<int:pk>/', views.product, name='products'),
->>>>>>> cd8260af2a19e6ce84f9eca8613e9a486a8cb5ed
-
+  
     path('', views.ProductView.as_view(), name='home'),
     path('product-detail/<int:pk>/', views.ProductDetailView.as_view(), name='product-detail'),
     

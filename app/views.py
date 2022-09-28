@@ -249,16 +249,3 @@ def payment_done(request):
         c.delete()
     return redirect("orders")
 
-from . serializers import ProductSerializer
-
-@api_view(['GET'])
-def products(request):
-    product = Product.objects.all()
-    serializers = ProductSerializer(product, many=True)
-    return Response(serializers.data)
-    
-@api_view(['GET'])
-def product(request,pk):
-    product = Product.objects.get(pk=pk)
-    serializers = ProductSerializer(product)
-    return Response(serializers.data)
